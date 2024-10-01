@@ -19,12 +19,12 @@ const ProductList = ({ products, addToCart }) => {
   return (
     <div className="row">
       {products.map((product) => (
-        <div key={product.id} className="col-md-3 mb-"> {/* เปลี่ยน col-md-2 เป็น col-md-2 */}
-          <div className="card h-200">
+        <div key={product.id} className="col-md-3 mb-">
+          <div className="card h-100 d-flex flex-column">
             <div className="card-img-top-container">
               <img src={product.image} className="card-img-top" alt={product.name} style={{ height: '250px', objectFit: 'contain' }} /> {/* ปรับขนาดภาพที่นี่ */}
             </div>
-            <div className="card-body text-center">
+            <div className="card-body d-flex flex-column justify-content-between text-center">
               <h5 className="card-title">{product.name}</h5>
               <p className="card-text">ราคา: {product.price} บาท</p>
               <button className="btn btn-primary" onClick={() => addToCart(product)}>เพิ่มลงตระกร้า</button>
@@ -67,7 +67,7 @@ const App = () => {
   const [discount, setDiscount] = useState(0);
   const [shippingCost, setShippingCost] = useState(100);
   const [canCheckout, setCanCheckout] = useState(false);
-  const [orderSuccess, setOrderSuccess] = useState(false); // เพิ่ม state สำหรับสั่งซื้อสำเร็จ
+  const [orderSuccess, setOrderSuccess] = useState(false);
 
   const addToCart = (product) => {
     const existingItem = cart.find((item) => item.id === product.id);
